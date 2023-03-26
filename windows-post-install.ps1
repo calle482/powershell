@@ -9,7 +9,7 @@ foreach ($program in $programs) {
 }
 
 #Debloat install
-"$PSScriptRoot\Windows10Debloater.ps1"
+$PSScriptRoot+"\Windows10Debloater.ps1"
 
 #activate windows
 irm https://massgrave.dev/get | iex
