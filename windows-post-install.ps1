@@ -15,6 +15,7 @@ $programs=@(
 'spotify'
 'winscp'
 'geforce-experience'
+'prismlauncher'
 )
 
 #install apps with chocolatey
@@ -28,5 +29,11 @@ $script = $PSScriptRoot+"\Windows10SysPrepDebloater.ps1"
 
 #activate windows
 & ([ScriptBlock]::Create((irm https://massgrave.dev/get))) /HWID
+
+#copy csgo config
+cd c:\temp
+git clone https://github.com/calle482/csgo-config
+New-Item -ItemType Directory -Force -Path "C:\Program Files(x86)\Steam\userdata/149571724"
+Copy-Item -Recurse "c:\temp\csgo-config\730" "C:\Program Files(x86)\Steam\userdata/149571724\"
 
 Write-Host "Script finsihed"
