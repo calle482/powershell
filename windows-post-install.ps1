@@ -1,7 +1,21 @@
 #install chocolatey
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
-$programs=@('Discord','Steam','Firefox','powershell-core','vscodium','notepadplusplus.install','vlc','git','7zip','microsoft-windows-terminal','spotify','winscp','geforce-experience')
+$programs=@(
+'Discord'
+'Steam'
+'Firefox'
+'powershell-core'
+'vscodium'
+'notepadplusplus.install'
+'vlc'
+'git'
+'7zip'
+'microsoft-windows-terminal'
+'spotify'
+'winscp'
+'geforce-experience'
+)
 
 #install apps with chocolatey
 foreach ($program in $programs) {
@@ -9,8 +23,10 @@ foreach ($program in $programs) {
 }
 
 #Debloat install
-$script = $PSScriptRoot+"\Windows10Debloater.ps1"
+$script = $PSScriptRoot+"\Windows10SysPrepDebloater.ps1"
 &$script
 
 #activate windows
-irm https://massgrave.dev/get | iex
+& ([ScriptBlock]::Create((irm https://massgrave.dev/get))) /HWID
+
+Write-Host "Script finsihed"
