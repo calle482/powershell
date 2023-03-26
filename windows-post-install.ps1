@@ -31,8 +31,9 @@ $script = $PSScriptRoot+"\Windows10SysPrepDebloater.ps1"
 & ([ScriptBlock]::Create((irm https://massgrave.dev/get))) /HWID
 
 #copy csgo config
-cd c:\temp
-git clone https://github.com/calle482/csgo-config
+new-item -itemtype directory -force -path c:\temp
+cd 'c:\Program Files\Git\bin'
+.\git.exe clone https://github.com/calle482/csgo-config c:\temp
 New-Item -ItemType Directory -Force -Path "C:\Program Files (x86)\Steam\userdata/149571724"
 Write-Host "Sleeping to allow git clone to finish"
 Start-Sleep -Seconds 15
